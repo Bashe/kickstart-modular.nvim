@@ -3,6 +3,23 @@
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+if vim.g.neovide then
+  -- vim.o.guifont = 'JetBrainsMono NFM:h9' -- text below applies for VimScript
+  vim.o.guifont = 'FiraCode NF:h9' -- text below applies for VimScript
+end
+
+-- I preffer pwsh...
+vim.opt.shell = vim.fn.executable 'pwsh.exe' and 'pwsh.exe' or 'powershell'
+vim.opt.shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+vim.opt.shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait'
+vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+vim.opt.shellquote = ''
+vim.opt.shellxquote = ''
+
+-- I hate the 2/8 space/tab
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, for help with jumping.
